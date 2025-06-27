@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Button, TextField, Box, Typography } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
@@ -67,6 +68,131 @@ const ShortenerForm = () => {
       </Button>
       <URLList data={shortenedUrls} />
     </Box>
+=======
+
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Grid,
+  Paper,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Log } from "../utils/logger";
+
+const ShortenerForm = () => {
+  const [originalUrl, setOriginalUrl] = useState("");
+  const [validity, setValidity] = useState(""); // in minutes
+  const [shortcode, setShortcode] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const isValidUrl = (url) => {
+    return url.startsWith("http://") || url.startsWith("https://");
+  };
+
+  const handleShorten = () => {
+    setError("");
+
+    if (!originalUrl || !isValidUrl(originalUrl)) {
+      setError("Please enter a valid URL (must start with http:// or https://)");
+      Log("Invalid URL input", "WARN", "ShortenerForm", originalUrl);
+      return;
+    }
+
+    if (!shortcode.trim()) {
+      setError("Shortcode is required");
+      Log("Empty shortcode", "WARN", "ShortenerForm", "Shortcode field was empty");
+      return;
+    }
+
+    const storage = JSON.parse(localStorage.getItem("shortenedUrls") || "{}");
+
+    if (storage[shortcode]) {
+      setError("Shortcode already exists. Please choose another.");
+      Log("Duplicate shortcode", "WARN", "ShortenerForm", `Shortcode "${shortcode}" already exists`);
+      return;
+    }
+
+    const createdAt = Date.now();
+    const expiresIn = validity ? parseInt(validity) * 60 * 1000 : 30 * 60 * 1000;
+    const expiry = createdAt + expiresIn;
+
+    const newEntry = {
+      originalUrl,
+      createdAt,
+      expiry,
+      shortcode,
+      clicks: [],
+    };
+
+    storage[shortcode] = newEntry;
+    localStorage.setItem("shortenedUrls", JSON.stringify(storage));
+
+    Log("URL shortened", "INFO", "ShortenerForm", `Shortened ${originalUrl} to /${shortcode}`);
+
+    alert(`Shortened URL created: ${window.location.origin}/${shortcode}`);
+    setOriginalUrl("");
+    setShortcode("");
+    setValidity("");
+    navigate("/stats");
+  };
+
+  return (
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Paper elevation={3} sx={{ p: 4 }}>
+        <Typography variant="h5" gutterBottom>
+          🔗 URL Shortener
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Enter a long URL"
+              fullWidth
+              value={originalUrl}
+              onChange={(e) => setOriginalUrl(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Enter custom shortcode"
+              fullWidth
+              value={shortcode}
+              onChange={(e) => setShortcode(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Validity (in minutes)"
+              fullWidth
+              type="number"
+              value={validity}
+              onChange={(e) => setValidity(e.target.value)}
+              placeholder="Default is 30 minutes"
+            />
+          </Grid>
+          {error && (
+            <Grid item xs={12}>
+              <Typography color="error">{error}</Typography>
+            </Grid>
+          )}
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleShorten}
+              fullWidth
+            >
+              Shorten URL
+            </Button>
+          </Grid>
+        </Grid>
+      </Paper>
+    </Container>
+>>>>>>> 3094463 ( Initial Commit)
   );
 };
 
