@@ -28,6 +28,8 @@ All important actions are logged using the Log() function
 ![image](https://github.com/user-attachments/assets/b3949d34-0048-454a-a7d2-544beb891f16)
 
 -> Architecture 
-![image](https://github.com/user-attachments/assets/3f8d9713-9c3f-49d6-abba-e984232922e6)
+
+![image](https://github.com/user-attachments/assets/3805c431-d470-4fa9-b73b-1a3a43902f73)
+
 
 
