@@ -25,7 +25,13 @@ A simple React-based URL shortener application developed as part of the Affordme
 
 All important actions are logged using the Log() function
 
-![image](https://github.com/user-attachments/assets/b3949d34-0048-454a-a7d2-544beb891f16)
+![image](https://github.com/user-attachments/assets/b3949d34-0048-454a-a7d2-544beb891f16) (Desktop View)
+
+![image](https://github.com/user-attachments/assets/ff66c57d-f3ff-4b35-85cc-1ac2cbe5dc77) (Mobile View)
+
+![Uploading image.png…]()
+
+
 
 -> Architecture 
 
