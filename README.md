@@ -29,7 +29,8 @@ All important actions are logged using the Log() function
 
 -> Architecture 
 
-![image](https://github.com/user-attachments/assets/3805c431-d470-4fa9-b73b-1a3a43902f73)
+![image](https://github.com/user-attachments/assets/a3b63abb-8723-402e-a074-7be13fb6ad2c)
+
 
 
 
