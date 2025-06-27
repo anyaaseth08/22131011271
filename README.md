@@ -32,6 +32,7 @@ All important actions are logged using the Log() function
 4. LocalStorage for browser-based data persistence
 5. Custom Logging Utility for remote API logging
 
+-> Scrrenshots of output
 ![image](https://github.com/user-attachments/assets/b3949d34-0048-454a-a7d2-544beb891f16) (Desktop View)
 
 ![image](https://github.com/user-attachments/assets/ff66c57d-f3ff-4b35-85cc-1ac2cbe5dc77) (Mobile View)
