@@ -29,7 +29,7 @@ All important actions are logged using the Log() function
 
 ![image](https://github.com/user-attachments/assets/ff66c57d-f3ff-4b35-85cc-1ac2cbe5dc77) (Mobile View)
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/2f9f06ea-0ae2-4e6e-a605-5d0c7eb8f47a)
 
 
 
